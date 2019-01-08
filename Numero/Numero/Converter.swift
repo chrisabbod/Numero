@@ -29,31 +29,25 @@
 class Converter {
   
     func convert(_ number: Int) -> String {
-        var result = "" // 1
-        var localNumber = number // 2
+        var localNumber = number
+        var result = ""
         
-        while localNumber >= 10 { // 1
-            result += "X" // 2
-            localNumber = localNumber - 10 // 3
-        }
-
-        if localNumber >= 9 {
-            result += "IX"
-            localNumber = localNumber - 9
-        }
-
-        if localNumber >= 5 { // 3
-            result += "V" // 4
-            localNumber = localNumber - 5 // 5
+        let numberSymbols: [(number: Int, symbol: String)] =
+            [(10, "X"),
+             (9, "IX"),
+             (5, "V"),
+             (4, "IV"),
+             (1, "I")]
+        
+        for item in numberSymbols {
+            while localNumber >= item.number {
+                result += item.symbol
+                localNumber = localNumber - item.number
+            }
         }
         
-        if localNumber >= 4 {
-            result += "IV"
-            localNumber = localNumber - 4
-        }
-
-        result += String(repeating: "I", count: localNumber) // 6
         return result
     }
+
 
 }

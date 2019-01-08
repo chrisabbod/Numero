@@ -32,7 +32,7 @@ class Converter {
         var result = "" // 1
         var localNumber = number // 2
         
-        if localNumber >= 10 { // 1
+        while localNumber >= 10 { // 1
             result += "X" // 2
             localNumber = localNumber - 10 // 3
         }
